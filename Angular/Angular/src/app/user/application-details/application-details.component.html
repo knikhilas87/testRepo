@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+    <form #ApplicationForm [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Application Form</h2>
+      <mat-error *ngIf="applicationValid">
+        {{ errorMessage }}
+      </mat-error>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Partner Name" formControlName="partnerName" required>
+        <mat-error>
+          Please provide a name
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="No. of Insured people"  formControlName="InsuredPeople" required>
+        <mat-error>
+          Please enter only numbers
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="No. of senior people insured" formControlName="seniorInsured" required>
+        <mat-error>
+          Please enter only numbers
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Annual Revenue" numbersOnly formControlName="revenue" required>
+        <mat-error>
+          Please enter only numbers
+        </mat-error>
+      </mat-form-field>
+       <mat-form-field >
+        <input matInput [matDatepicker]="picker" placeholder="Year of Establishment" formControlName="year" required>
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" >Submit</button>
+    </form>
+  </mat-card-content>
+</mat-card>
